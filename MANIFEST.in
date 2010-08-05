@@ -1,0 +1,3 @@
+include README.mdown
+
+recursive-include googletools/templates *
