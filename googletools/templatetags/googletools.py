@@ -11,8 +11,8 @@ register = template.Library()
 
 class AnalyticsCodeNode(template.Node):
     
-    def __init__(self):
-        self.site = Site.objects.get_current()
+    def __init__(self, site):
+        self.site = site
         self.template = 'googletools/analytics_code.html'
         try:
             self.code = AnalyticsCode.objects.get(site=self.site)
@@ -31,8 +31,8 @@ class AnalyticsCodeNode(template.Node):
 
 class SiteVerificationCodeNode(template.Node):
     
-    def __init__(self):
-        self.site = Site.objects.get_current()
+    def __init__(self, site):
+        self.site = site
         self.template = 'googletools/site_verification_code.html'
         try:
             self.code = SiteVerificationCode.objects.get(site=self.site)
@@ -62,8 +62,7 @@ def analytics_code(parser, token):
         tag_name = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
-    return AnalyticsCodeNode()
-
+    return AnalyticsCodeNode(site=Site.objects.get_current())
 
 @register.tag
 def site_verification_code(parser, token):
@@ -78,4 +77,4 @@ def site_verification_code(parser, token):
         tag_name = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
-    return SiteVerificationCodeNode()
+    return SiteVerificationCodeNode(site=Site.objects.get_current())
