@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class AnalyticsCode(models.Model):
     site = models.ForeignKey(Site, verbose_name=_('site'), unique=True)
     code = models.CharField(_('code'), max_length=100)
+    speed = models.BooleanField(verbose_name=_('track speed'), default=False)
     
     def __unicode__(self):
         return self.code

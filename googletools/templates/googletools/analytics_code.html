@@ -3,6 +3,7 @@
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '{{ analytics_code }}']);
   _gaq.push(['_trackPageview']);
+  {% if analytics_code.speed %}_gaq.push(['_trackPageLoadTime']);{% endif %}
 
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
