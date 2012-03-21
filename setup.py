@@ -2,7 +2,7 @@ from distutils.core import setup
 
 
 setup(
-    name='django-google-tools',
+    name='Django Google Tools',
     version='0.1.3',
     description='A simple Django app for managing Google Analytics and Site Verification codes.',
     author='Orne Brocaar',
