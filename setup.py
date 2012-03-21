@@ -12,5 +12,12 @@ setup(
         'googletools',
         'googletools.migrations',
         'googletools.templatetags',
-    ]
+    ],
+    package_data = {
+        'googletools': [
+            'templates/googletools/*.html',
+            'templates/googletools/tests/*.html',
+            'fixtures/*.json',
+        ],
+    }
 )
