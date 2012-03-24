@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 
 setup(
@@ -8,9 +8,19 @@ setup(
     author='Orne Brocaar',
     author_email='info@brocaar.com',
     url='http://github.com/LUKKIEN/django-google-tools',
-    packages=[
-        'googletools',
-        'googletools.migrations',
-        'googletools.templatetags',
-    ]
+    license='MIT',
+    packages=find_packages(),
+    include_package_data=True,
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.5',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Internet :: WWW/HTTP',
+    ],
 )
