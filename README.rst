@@ -40,6 +40,15 @@ Or if you are using ``South``::
 
     $ ./manage.py migrate
 
+If you have in your settings ``DEBUG=True`` googletools will not render anything
+because this library is inteded mostly to use on production sites, if you want to
+change this behavior you can set ``GOOGLETOOLS_ENABLED=True`` in your settings
+file. Just for clarification it is defined like this::
+
+    GOOGLETOOLS_ENABLED = not DEBUG
+
+That means googletools will be enabled when ``DEBUG=False`` by default.
+
 
 Management
 ----------

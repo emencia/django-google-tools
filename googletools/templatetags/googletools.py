@@ -1,3 +1,4 @@
+from django.conf import settings
 from django import template
 from django.contrib.sites.models import Site
 from django.db import models
@@ -16,13 +17,14 @@ class AnalyticsCodeNode(template.Node):
     def __init__(self, site):
         self.site = site
         self.template = 'googletools/analytics_code.html'
+        self.enabled = getattr(settings, 'GOOGLETOOLS_ENABLED', not settings.DEBUG)
         try:
             self.code = AnalyticsCode.objects.get(site=self.site)
         except AnalyticsCode.DoesNotExist:
             self.code = None
     
     def render(self, context):
-        if not self.code:
+        if not self.enabled or not self.code:
             return ''
         
         t = loader.get_template(self.template)
@@ -37,13 +39,14 @@ class SiteVerificationCodeNode(template.Node):
     def __init__(self, site):
         self.site = site
         self.template = 'googletools/site_verification_code.html'
+        self.enabled = getattr(settings, 'GOOGLETOOLS_ENABLED', not settings.DEBUG)
         try:
             self.code = SiteVerificationCode.objects.get(site=self.site)
         except SiteVerificationCode.DoesNotExist:
             self.code = None
     
     def render(self, context):
-        if not self.code:
+        if not self.enabled or not self.code:
             return ''
         
         t = loader.get_template(self.template)
