@@ -3,11 +3,13 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.template import loader, Context
 
+
 AnalyticsCode = models.get_model('googletools', 'analyticscode')
 SiteVerificationCode = models.get_model('googletools', 'siteverificationcode')
 
 
 register = template.Library()
+
 
 class AnalyticsCodeNode(template.Node):
     
@@ -24,6 +26,7 @@ class AnalyticsCodeNode(template.Node):
             return ''
         
         t = loader.get_template(self.template)
+
         return t.render(Context({
             'analytics_code': self.code,
         }))
@@ -44,6 +47,7 @@ class SiteVerificationCodeNode(template.Node):
             return ''
         
         t = loader.get_template(self.template)
+
         return t.render(Context({
             'site_verification_code': self.code,
         }))
@@ -62,7 +66,9 @@ def analytics_code(parser, token):
         tag_name = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
+
     return AnalyticsCodeNode(site=Site.objects.get_current())
+
 
 @register.tag
 def site_verification_code(parser, token):
@@ -77,4 +83,5 @@ def site_verification_code(parser, token):
         tag_name = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
+
     return SiteVerificationCodeNode(site=Site.objects.get_current())

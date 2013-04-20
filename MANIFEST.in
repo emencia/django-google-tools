@@ -1,4 +1,4 @@
-include README.mdown
+include README.rst
 
 recursive-include googletools/templates *
 recursive-include googletools/fixtures *

@@ -1,5 +1,5 @@
+django_google_tools.egg-info
 *.pyc
-.*
+build
 dist
-MANIFEST
-
+.DS_Store

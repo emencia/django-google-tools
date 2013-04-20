@@ -2,8 +2,8 @@ from django.contrib.sites.models import Site
 from django.template.loader import render_to_string
 from django.test import TestCase
 
-from googletools.templatetags.googletools import AnalyticsCodeNode, \
-    SiteVerificationCodeNode
+from googletools.templatetags.googletools import AnalyticsCodeNode
+from googletools.templatetags.googletools import SiteVerificationCodeNode
 
 
 class AnalyticsCodeTestCase(TestCase):
