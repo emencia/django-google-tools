@@ -1,11 +1,21 @@
 language: python
+
 python:
   - "2.6"
   - "2.7"
+  - "3.2"
+
 env:
   - PYTHONPATH=$PYTHONPATH:$PWD DJANGO_VERSION=1.4.5
   - PYTHONPATH=$PYTHONPATH:$PWD DJANGO_VERSION=1.5
+
+matrix:
+  exclude:
+   - python: "3.2"
+     env: PYTHONPATH=$PYTHONPATH:$PWD DJANGO_VERSION=1.4.5
+
 install: 
   - pip install --use-mirrors Django==$DJANGO_VERSION
+
 script: 
   - django-admin.py test googletools --settings=googletools.test_settings
