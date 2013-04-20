@@ -47,7 +47,7 @@ file. Just for clarification it is defined like this::
 
     GOOGLETOOLS_ENABLED = not DEBUG
 
-That means googletools will be enabled when ``DEBUG=False`` by default.
+This means, by default googletools will be enabled when ``DEBUG=False``.
 
 
 Management
