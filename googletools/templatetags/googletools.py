@@ -65,7 +65,7 @@ def analytics_code(parser, token):
     try:
         tag_name = token.split_contents()
     except ValueError:
-        raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
+        raise template.TemplateSyntaxError('%r does not take any arguments' % token.contents.split()[0])
 
     return AnalyticsCodeNode(site=Site.objects.get_current())
 
@@ -82,6 +82,6 @@ def site_verification_code(parser, token):
     try:
         tag_name = token.split_contents()
     except ValueError:
-        raise template.TemplateSyntaxError, '%r does not take any arguments' % token.contents.split()[0]
+        raise template.TemplateSyntaxError('%r does not take any arguments' % token.contents.split()[0])
 
     return SiteVerificationCodeNode(site=Site.objects.get_current())
