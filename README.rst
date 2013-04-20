@@ -54,20 +54,22 @@ Templatetags will return an empty string if they are not configured for the curr
 
 The template should look like:
 
-    {% load googletools %}
-    <html>
-        <head>
-            <meta charset="utf-8">
-            ...
-            <meta name="description" content="..." />
-            {% site_verification_code %}
+```
+{% load googletools %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        ...
+        <meta name="description" content="..." />
+        {% site_verification_code %}
 
-            <link rel="stylesheet" href="/static/css/style.min.css">
+        <link rel="stylesheet" href="/static/css/style.min.css">
 
-            {% analytics_code %}
-        </head>
-        <body>
-            <h1>My awesome project</h1>
-            ...
-        </body>
-    </html>
+        {% analytics_code %}
+    </head>
+    <body>
+        <h1>My awesome project</h1>
+        ...
+    </body>
+</html>
+```
