@@ -6,6 +6,14 @@ Django Google Tools
     :target: http://travis-ci.org/camilonova/django-google-tools
 
 
+Installation
+------------
+
+In your virtualenv just type::
+
+    $ pip install django-google-tools
+
+
 Configuration
 -------------
 
@@ -52,24 +60,22 @@ Use ``{% site_verification_code %}`` for inserting your site verification code.
 
 Templatetags will return an empty string if they are not configured for the current site.
 
-The template should look like:
+The template should look like::
 
-```
-{% load googletools %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        ...
-        <meta name="description" content="..." />
-        {% site_verification_code %}
+    {% load googletools %}
+    <html>
+        <head>
+            <meta charset="utf-8">
+            ...
+            <meta name="description" content="..." />
+            {% site_verification_code %}
 
-        <link rel="stylesheet" href="/static/css/style.min.css">
+            <link rel="stylesheet" href="/static/css/style.min.css">
 
-        {% analytics_code %}
-    </head>
-    <body>
-        <h1>My awesome project</h1>
-        ...
-    </body>
-</html>
-```
+            {% analytics_code %}
+        </head>
+        <body>
+            <h1>My awesome project</h1>
+            ...
+        </body>
+    </html>
