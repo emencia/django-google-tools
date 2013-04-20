@@ -5,6 +5,8 @@ Django Google Tools
     :alt: Build Status
     :target: http://travis-ci.org/camilonova/django-google-tools
 
+Django app for managing Google Analytics and Site Verification codes.
+
 
 Installation
 ------------
