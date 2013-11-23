@@ -19,7 +19,20 @@ In your virtualenv just type::
 Configuration
 -------------
 
-1. Add ``googletools`` to your ``INSTALLED_APPS``::
+In Django 1.6 the sites framework is disabled by default, for enable the sites
+framework in Django 1.6 follow the steps 1, 2 and 3:
+
+1. Add 'django.contrib.sites' to your INSTALLED_APPS setting.
+
+2. Define a SITE_ID setting::
+
+    SITE_ID = 1
+
+3. Run in your shell::
+
+    $ ./manage.py syncdb
+
+4. Add ``googletools`` to your ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         'django.contrib.admin',
@@ -32,7 +45,7 @@ Configuration
         ...
     )
 
-2. Run in your shell::
+5. Run in your shell::
 
     $ ./manage.py syncdb
 
