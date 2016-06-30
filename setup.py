@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-google-tools',
-    version='1.0.0',
+    version='1.1.0',
     description='Django app for managing Google Analytics and Site Verification codes.',
     keywords='django, analytics, google analytics, verification code, site verification',
     author='Orne Brocaar, Camilo Nova',
