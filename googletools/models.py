@@ -28,3 +28,16 @@ class SiteVerificationCode(models.Model):
         ordering = ('site', 'code')
         verbose_name = _('site verification code')
         verbose_name_plural = _('site verification codes')
+
+
+class GTMCode(models.Model):
+    site = models.OneToOneField(Site, verbose_name=_('site'))
+    code = models.CharField(_('code'), max_length=100)
+
+    def __unicode__(self):
+        return self.code
+
+    class Meta:
+        ordering = ('site', 'code')
+        verbose_name = _('google tag manager code')
+        verbose_name_plural = _('google tag manager code')

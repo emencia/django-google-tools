@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from googletools.models import AnalyticsCode, SiteVerificationCode
+from googletools.models import AnalyticsCode, SiteVerificationCode, GTMCode
 
 
 class AnalyticsCodeAdmin(admin.ModelAdmin):
@@ -12,5 +12,10 @@ class SiteVerificationCodeAdmin(admin.ModelAdmin):
     list_display = ('code', 'site')
 
 
+class GTMCodeAdmin(admin.ModelAdmin):
+    list_display = ('code', 'site')
+
+
 admin.site.register(AnalyticsCode, AnalyticsCodeAdmin)
 admin.site.register(SiteVerificationCode, SiteVerificationCodeAdmin)
+admin.site.register(GTMCode, GTMCodeAdmin)
