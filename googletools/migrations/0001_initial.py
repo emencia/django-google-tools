@@ -1,58 +1,41 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'AnalyticsCode'
-        db.create_table('googletools_analyticscode', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'], unique=True)),
-            ('code', self.gf('django.db.models.fields.CharField')(max_length=100)),
-        ))
-        db.send_create_signal('googletools', ['AnalyticsCode'])
-
-        # Adding model 'SiteVerificationCode'
-        db.create_table('googletools_siteverificationcode', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'], unique=True)),
-            ('code', self.gf('django.db.models.fields.CharField')(max_length=100)),
-        ))
-        db.send_create_signal('googletools', ['SiteVerificationCode'])
+from django.db import migrations, models
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'AnalyticsCode'
-        db.delete_table('googletools_analyticscode')
+class Migration(migrations.Migration):
 
-        # Deleting model 'SiteVerificationCode'
-        db.delete_table('googletools_siteverificationcode')
+    dependencies = [
+        ('sites', '0001_initial'),
+    ]
 
-
-    models = {
-        'googletools.analyticscode': {
-            'Meta': {'object_name': 'AnalyticsCode'},
-            'code': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'site': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sites.Site']", 'unique': 'True'})
-        },
-        'googletools.siteverificationcode': {
-            'Meta': {'object_name': 'SiteVerificationCode'},
-            'code': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'site': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sites.Site']", 'unique': 'True'})
-        },
-        'sites.site': {
-            'Meta': {'object_name': 'Site', 'db_table': "'django_site'"},
-            'domain': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        }
-    }
-
-    complete_apps = ['googletools']
+    operations = [
+        migrations.CreateModel(
+            name='AnalyticsCode',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('code', models.CharField(max_length=100, verbose_name='code')),
+                ('speed', models.BooleanField(default=False, verbose_name='track speed')),
+                ('site', models.OneToOneField(verbose_name='site', to='sites.Site')),
+            ],
+            options={
+                'ordering': ('site', 'code'),
+                'verbose_name': 'analytics code',
+                'verbose_name_plural': 'analytics codes',
+            },
+        ),
+        migrations.CreateModel(
+            name='SiteVerificationCode',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('code', models.CharField(max_length=100, verbose_name='code')),
+                ('site', models.OneToOneField(verbose_name='site', to='sites.Site')),
+            ],
+            options={
+                'ordering': ('site', 'code'),
+                'verbose_name': 'site verification code',
+                'verbose_name_plural': 'site verification codes',
+            },
+        ),
+    ]
